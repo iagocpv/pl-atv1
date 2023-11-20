@@ -6,6 +6,8 @@ import CadastroProduto from "../negocio/cadastroProduto";
 import CadastroServico from "../negocio/cadastroServicos";
 import ListagemClientes from "../negocio/listagemClientes";
 import ListagemPets from "../negocio/listagemPets";
+import ListagemProduto from "../negocio/listagemProduto";
+import ListagemServicos from "../negocio/listagemServicos";
 
 console.log(`Bem-vindo ao melhor sistema de gerenciamento de pet shops e clínicas veterinarias`)
 let empresa = new Empresa()
@@ -130,7 +132,7 @@ while (execucao) {
                 default:
                     console.log(`Operação não entendida :(`)
             }
-            
+
         case 3:
             console.log(`\nOpções:`);
             console.log(`1 - Cadastrar produto`);
@@ -145,6 +147,8 @@ while (execucao) {
                     cadastroProdutos.cadastrar()
                     break;
                 case 2:
+                    let listagemProdutos = new ListagemProduto(empresa.getProdutos)
+                    listagemProdutos.listar()
                     break;
                 case 3:
                     break;
@@ -171,6 +175,8 @@ while (execucao) {
                     cadastroServico.cadastrar()
                     break;
                 case 2:
+                    let listagemServico = new ListagemServicos(empresa.getServicos)
+                    listagemServico.listar()
                     break;
                 case 3:
                     break;
