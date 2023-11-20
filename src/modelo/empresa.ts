@@ -52,7 +52,8 @@ export default class Empresa{
         let produto = this.produtos.find(p => p.getId == id)
         let nome: string | undefined
         let valor: number | undefined
-        console.log('O que deseja atualizar?')
+        console.log(`\nO que deseja atualizar?`)
+        console.log(`\n`)
         console.log('1 - Nome')
         console.log('2 - Valor')
         console.log('3 - Tudo')
@@ -81,6 +82,10 @@ export default class Empresa{
         console.log(produto)
     }
 
+    public deleteProduto(id: number){
+        this.produtos = this.produtos.filter(p => p.getId != id)
+        return 'Produto deletado'
+    }
     
 
     public updateServico(id: number){
@@ -88,7 +93,8 @@ export default class Empresa{
         let servico = this.servicos.find(s => s.getId == id)
         let nome: string | undefined
         let valor: number | undefined
-        console.log('O que deseja atualizar?')
+        console.log(`\nO que deseja atualizar?`)
+        console.log(`\n`)
         console.log('1 - Nome')
         console.log('2 - Valor')
         console.log('3 - Tudo')
@@ -112,5 +118,10 @@ export default class Empresa{
 
         console.log('Servico atualizado')
         console.log(servico)
+    }
+
+    public deleteServico(id: number){
+        this.servicos = this.servicos.filter(s => s.getId != id)
+        return 'Servico deletado'
     }
 }

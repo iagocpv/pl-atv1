@@ -151,10 +151,12 @@ while (execucao) {
                     listagemProdutos.listar()
                     break;
                 case 3:
-                    let id = entrada.receberNumero('Digite o id do produto: ')
-                    empresa.updateProduto(id)
+                    let idUpdate = entrada.receberNumero('Digite o id do produto: ')
+                    empresa.updateProduto(idUpdate)
                     break;
                 case 4:
+                    let idDelete = entrada.receberNumero('Digite o id do produto: ')
+                    console.log(empresa.deleteProduto(idDelete))
                     break;
                 case 0:
                     break;
@@ -171,7 +173,7 @@ while (execucao) {
             console.log(`4 - Deletar serviço`);
             console.log(`0 - Voltar`);
             
-            switch (entrada.receberNumero(`\nPor favor, escolha uma opção: `)){
+            switch (entrada.receberNumero(`Por favor, escolha uma opção: `)){
                 case 1:
                     let cadastroServico = new CadastroServico(empresa.getServicos)
                     cadastroServico.cadastrar()
@@ -181,10 +183,12 @@ while (execucao) {
                     listagemServico.listar()
                     break;
                 case 3:
-                    let id = entrada.receberNumero('Digite o id do servico: ')
-                    empresa.updateServico(id)
+                    let idUpdate = entrada.receberNumero('Digite o id do servico: ')
+                    empresa.updateServico(idUpdate)
                     break;
                 case 4:
+                    let idDelete = entrada.receberNumero('Digite o id do produto: ')
+                    console.log(empresa.deleteProduto(idDelete))
                     break;
                 case 0:
                     break;
