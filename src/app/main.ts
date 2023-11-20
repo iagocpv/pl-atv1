@@ -151,6 +151,8 @@ while (execucao) {
                     listagemProdutos.listar()
                     break;
                 case 3:
+                    let id = entrada.receberNumero('Digite o id do produto: ')
+                    empresa.updateProduto(id)
                     break;
                 case 4:
                     break;
@@ -179,11 +181,15 @@ while (execucao) {
                     listagemServico.listar()
                     break;
                 case 3:
+                    let id = entrada.receberNumero('Digite o id do servico: ')
+                    empresa.updateServico(id)
                     break;
                 case 4:
                     break;
                 case 0:
                     break;
+                default:
+                    console.log('Operação não entendida :(')
             }
             break;
         case 5:            

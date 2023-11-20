@@ -46,4 +46,71 @@ export default class Empresa{
         this.clientes = this.clientes.filter(c => c.getCpf.getValor != cpf)
         return 'Cliente deletado'
     }
+
+    public updateProduto(id: number){
+        let entrada = new Entrada()
+        let produto = this.produtos.find(p => p.getId == id)
+        let nome: string | undefined
+        let valor: number | undefined
+        console.log('O que deseja atualizar?')
+        console.log('1 - Nome')
+        console.log('2 - Valor')
+        console.log('3 - Tudo')
+
+        switch (entrada.receberNumero(`Por favor escolha uma opção: `)) {
+            case 1:
+                nome = entrada.receberTexto(`Por favor informe o novo nome do produto: `);
+                valor = produto?.valor
+                produto = produto?.update(nome, valor ?? 0)
+                break;
+            case 2:
+                nome = produto?.nome
+                valor = entrada.receberNumero(`Por favor informe o novo valor do produto: `);
+                produto = produto?.update(nome ?? '', valor)
+                break;
+            case 3:
+                nome = entrada.receberTexto(`Por favor informe o novo nome do produto: `);
+                valor = entrada.receberNumero(`Por favor informe o novo valor do produto: `);
+                produto = produto?.update(nome, valor)
+                break;
+            default:
+                console.log('Opcão inválida')
+                break;
+        }
+        console.log('Produto atualizado')
+        console.log(produto)
+    }
+
+    
+
+    public updateServico(id: number){
+        let entrada = new Entrada()
+        let servico = this.servicos.find(s => s.getId == id)
+        let nome: string | undefined
+        let valor: number | undefined
+        console.log('O que deseja atualizar?')
+        console.log('1 - Nome')
+        console.log('2 - Valor')
+        console.log('3 - Tudo')
+
+        switch (entrada.receberNumero(`Por favor escolha uma opção: `)) {
+            case 1:
+                nome = entrada.receberTexto(`Por favor informe o novo nome do servico: `);
+                valor = servico?.valor
+                servico = servico?.update(nome, valor ?? 0)
+                break;
+            case 2:
+                nome = servico?.nome
+                valor = entrada.receberNumero(`Por favor informe o novo valor do servico: `);
+                servico = servico?.update(nome ?? '', valor)
+                break;
+            case 3:
+                nome = entrada.receberTexto(`Por favor informe o novo nome do servico: `);
+                valor = entrada.receberNumero(`Por favor informe o novo valor do servico: `);
+                break;
+        }
+
+        console.log('Servico atualizado')
+        console.log(servico)
+    }
 }

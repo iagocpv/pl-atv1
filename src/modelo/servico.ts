@@ -12,4 +12,10 @@ export default class Servico {
         this.nome = nome
         this.valor = valor
     }
+
+    public update(nome: string, valor: number) {
+        this.nome = nome
+        this.valor = valor
+        return this
+    }
 }
