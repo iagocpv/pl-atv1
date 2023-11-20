@@ -2,6 +2,8 @@ import Entrada from "../io/entrada";
 import Empresa from "../modelo/empresa";
 import CadastroCliente from "../negocio/cadastroCliente";
 import CadastroPet from "../negocio/cadastroPet";
+import CadastroProduto from "../negocio/cadastroProduto";
+import CadastroServico from "../negocio/cadastroServicos";
 import ListagemClientes from "../negocio/listagemClientes";
 import ListagemPets from "../negocio/listagemPets";
 
@@ -128,9 +130,55 @@ while (execucao) {
                 default:
                     console.log(`Operação não entendida :(`)
             }
-        case 3:            
+            
+        case 3:
+            console.log(`\nOpções:`);
+            console.log(`1 - Cadastrar produto`);
+            console.log(`2 - Listar todos os produtos`);
+            console.log(`3 - Editar produto`);
+            console.log(`4 - Deletar produto`);
+            console.log(`0 - Voltar`);
+
+            switch(entrada.receberNumero(`\nPor favor, escolha uma opção: `)) {
+                case 1:
+                    let cadastroProdutos = new CadastroProduto(empresa.getProdutos)
+                    cadastroProdutos.cadastrar()
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    break;
+                case 0:
+                    break;
+                default:
+                    console.log('Operação não entendida :(')
+                    break;
+            }
             break;
-        case 4:            
+        case 4:
+            console.log(`\nOpções:`);
+            console.log(`1 - Cadastrar serviço`);
+            console.log(`2 - Listar todos os serviços`);
+            console.log(`3 - Editar serviço`);
+            console.log(`4 - Deletar serviço`);
+            console.log(`0 - Voltar`);
+            
+            switch (entrada.receberNumero(`\nPor favor, escolha uma opção: `)){
+                case 1:
+                    let cadastroServico = new CadastroServico(empresa.getServicos)
+                    cadastroServico.cadastrar()
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    break;
+                case 0:
+                    break;
+            }
             break;
         case 5:            
             break;
