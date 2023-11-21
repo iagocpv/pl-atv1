@@ -9,6 +9,7 @@ export default class Empresa{
     private clientes: Array<Cliente>
     private produtos: Array<Produto>
     private servicos: Array<Servico>
+    private idPet = 0
     constructor(){
         this.clientes = []
         this.produtos = []
@@ -144,5 +145,10 @@ export default class Empresa{
     public deleteServico(id: number){
         this.servicos = this.servicos.filter(s => s.getId != id)
         return 'Servico deletado'
+    }
+
+    public idNovoPet(){
+        this.idPet += 1
+        return this.idPet
     }
 }

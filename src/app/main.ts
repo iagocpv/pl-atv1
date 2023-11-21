@@ -61,78 +61,47 @@ while (execucao) {
                     console.log(`Operação não entendida :(`)
             }            
             break;
-        case 2:
-            console.log(`\nOpções:`);
-            console.log(`1 - Cadastrar pet`);
-            console.log(`2 - Listar todos os pets`);
-            console.log(`3 - Encontrar pet`);
-            console.log(`4 - Deletar pet`);
-            console.log(`5 - Editar pet`);
-            console.log(`0 - Voltar`);
-
-            switch(entrada.receberNumero(`\nPor favor, escolha uma opção: `)) {
-                case 1:
-                    let cliente = empresa.findClienteByCpf(entrada.receberTexto('Digite o numero do CPF do cliente: '))
-                    if (cliente) {
+        case 2:            
+            let cliente = empresa.findClienteByCpf(entrada.receberTexto('Digite o numero do CPF do cliente: '))            
+            
+            if(cliente) {
+                console.log(`\nOpções:`);
+                console.log(`1 - Cadastrar pet`);
+                console.log(`2 - Listar todos os pets`);
+                console.log(`3 - Encontrar pet`);
+                console.log(`4 - Deletar pet`);
+                console.log(`5 - Editar pet`);
+                console.log(`0 - Voltar`);
+                
+                let idPet: number
+                switch(entrada.receberNumero(`\nPor favor, escolha uma opção: `)) {
+                    case 1:
                         let cadastroPet = new CadastroPet(cliente)
-                        cadastroPet.cadastrar()
+                        cadastroPet.cadastrar(empresa.idNovoPet())
                         break;
-                    } else {
-                        console.log('Cliente nao encontrado')
-                        break;
-                    }
-                case 2:
-                    let cliente2 = empresa.findClienteByCpf(entrada.receberTexto('Digite o numero do CPF do cliente: '))
-                    if (cliente2) {
-                        let listagemPets = new ListagemPets(cliente2.getPets)
+                    case 2:
+                        let listagemPets = new ListagemPets(cliente.getPets)
                         listagemPets.listar()
                         break;
-                    } else {
-                        console.log('Cliente nao encontrado')
+                    case 3:
+                        idPet = entrada.receberNumero('Digite o ID do pet: ')
+                        console.log(cliente.findPet(idPet))
                         break;
-                    }
-                case 3:
-                    let cliente3 = empresa.findClienteByCpf(entrada.receberTexto('Digite o numero do CPF do cliente: '))
-                    if (cliente3) {
-                        let nomePet = entrada.receberTexto('Digite o nome do pet: ')
-                        console.log(cliente3.findPet(nomePet))
+                    case 4:
+                        idPet = entrada.receberNumero('Digite o ID do pet: ')
+                        cliente.deletePet(idPet)
+                        break;                        
+                    case 5:
+                        idPet = entrada.receberNumero('Digite o ID do pet: ')
+                        cliente.updatePet(idPet)
                         break;
-                    } else {
-                        console.log('Cliente nao encontrado')
+                    case 0:
                         break;
-                    }
-                case 4:
-                    let cliente4 = empresa.findClienteByCpf(entrada.receberTexto('Digite o numero do CPF do cliente: '))
-                    if (cliente4) {
-                        let nomePet = entrada.receberTexto('Digite o nome do pet: ')
-                        cliente4.deletePet(nomePet)
-                        break;
-                    } else {
-                        console.log('Cliente nao encontrado')
-                        break;
-                    }
-                case 5:
-                    let cliente5 = empresa.findClienteByCpf(entrada.receberTexto('Digite o numero do CPF do cliente: '))
-                    if (cliente5) {
-                        let petAntigo = cliente5.findPet(entrada.receberTexto('Digite o nome do pet: '))
-                        let cadastroPet = new CadastroPet(cliente5)
-                        if(petAntigo) {
-                            cadastroPet.update(petAntigo)
-                        } else {
-                            console.log('Pet não encontrado')
-                            break
-                        }
-                        break;
-                    } else {
-                        console.log('Cliente nao encontrado')
-                        break;
-                    }
-                case 0:
-                    break;
-                default:
-                    console.log(`Operação não entendida :(`)
-            }
-
+                    default:
+                        console.log(`Operação não entendida :(`)
+                }
+            } else console.log('Cliente não encontrado')
+            break;
         case 3:
             console.log(`\nOpções:`);
             console.log(`1 - Cadastrar produto`);

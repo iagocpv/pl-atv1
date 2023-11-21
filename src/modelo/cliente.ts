@@ -1,3 +1,4 @@
+import Entrada from "../io/entrada"
 import CPF from "./cpf"
 import Pet from "./pet"
 import Produto from "./produto"
@@ -53,30 +54,72 @@ export default class Cliente {
         this.cpf = cpf
         return this
     }
-    public findPet(nome: string) {
-        return this.pets.find(p => p.getNome == nome)
+    public findPet(id: number) {
+        return this.pets.find(p => p.getId == id)
     }
     public addPet(pet: Pet) {
         this.pets.push(pet)
     }
-    public deletePet(nome: string) {      
-        let pet = this.pets.find(p => p.getNome == nome)
+    public deletePet(id: number) {      
+        let pet = this.pets.find(p => p.getId == id)
         if(pet) {
-            this.pets.splice(this.pets.indexOf(pet))
+            this.pets = this.pets.filter(p => p.getId != id)
             console.log('Pet excluido')
         } else {
             console.log('Pet não encontrado')
         }
     }
-    public updatePet(pet: Pet, novosValores: Pet) {
-        let petEncontrado = this.pets.find(p => p == pet)
-        if(petEncontrado) {
-            petEncontrado.setNome = novosValores.getNome
-            petEncontrado.setRaca = novosValores.getRaca
-            petEncontrado.setGenero = novosValores.getGenero
-            petEncontrado.setTipo = novosValores.getTipo
+    public updatePet(petId: number) {
+        let entrada = new Entrada()
+        let pet = this.findPet(petId)
 
-            console.log(petEncontrado)
+        if(pet) {
+            console.log(`\nInício da alteração do pet`);
+
+            console.log(`\nO que deseja atualizar?`)
+            console.log(`\n`)
+            console.log('1 - Nome')
+            console.log('2 - Raça')
+            console.log('3 - Tipo')
+            console.log('4 - Genero')
+            console.log('5 - Tudo')
+
+            let nome: string
+            let raca: string
+            let tipo: string
+            let genero: string
+
+            switch (entrada.receberNumero(`Por favor escolha uma opção: `)) {
+                case 1:
+                    nome = entrada.receberTexto(`Por favor informe o novo nome do pet: `);
+                    pet.setNome = nome
+                    break;
+                case 2:
+                    raca = entrada.receberTexto(`Por favor informe a nova raça do pet: `);
+                    pet.setRaca = raca
+                    break;
+                case 3:
+                    tipo = entrada.receberTexto(`Por favor informe o novo tipo do pet: `);
+                    pet.setTipo = tipo
+                    break;
+                case 4:
+                    genero = entrada.receberTexto(`Por favor informe o novo genero do pet: `);
+                    pet.setGenero = genero
+                    break;
+                case 5:
+                    nome = entrada.receberTexto(`Por favor informe o novo nome do pet: `);
+                    raca = entrada.receberTexto(`Por favor informe a nova raça do pet: `);
+                    tipo = entrada.receberTexto(`Por favor informe o novo tipo do pet: `);
+                    genero = entrada.receberTexto(`Por favor informe o novo genero do pet: `);
+                    pet.setNome = nome
+                    pet.setRaca = raca
+                    pet.setTipo = tipo
+                    pet.setGenero = genero
+                    break;
+                default:
+                    console.log(`Operação não entendida :(`)         
+            }
+            console.log(pet)
         } else console.log('Pet não encontrado')
        
     }
