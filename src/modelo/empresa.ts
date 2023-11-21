@@ -52,32 +52,42 @@ export default class Empresa{
         let produto = this.produtos.find(p => p.getId == id)
         let nome: string | undefined
         let valor: number | undefined
+        let quantidade: number | undefined
+
         console.log(`\nO que deseja atualizar?`)
         console.log(`\n`)
         console.log('1 - Nome')
         console.log('2 - Valor')
-        console.log('3 - Tudo')
+        console.log('3 - Quantidade')
+        console.log('4 - Tudo')
 
         switch (entrada.receberNumero(`Por favor escolha uma opção: `)) {
             case 1:
                 nome = entrada.receberTexto(`Por favor informe o novo nome do produto: `);
                 valor = produto?.valor
-                produto = produto?.update(nome, valor ?? 0)
+                produto = produto?.update(nome, valor ?? 0, quantidade ?? 0)
                 break;
             case 2:
                 nome = produto?.nome
                 valor = entrada.receberNumero(`Por favor informe o novo valor do produto: `);
-                produto = produto?.update(nome ?? '', valor)
+                produto = produto?.update(nome ?? '', valor, quantidade ?? 0)
                 break;
             case 3:
+                nome = produto?.nome
+                valor = produto?.valor
+                quantidade = entrada.receberNumero(`Por favor informe a nova quantidade do produto: `);
+                break;
+            case 4:
                 nome = entrada.receberTexto(`Por favor informe o novo nome do produto: `);
                 valor = entrada.receberNumero(`Por favor informe o novo valor do produto: `);
-                produto = produto?.update(nome, valor)
+                quantidade = entrada.receberNumero(`Por favor informe a nova quantidade do produto: `);
+                produto = produto?.update(nome, valor, quantidade)
                 break;
             default:
                 console.log('Opcão inválida')
                 break;
         }
+        
         console.log('Produto atualizado')
         console.log(produto)
     }
@@ -93,26 +103,37 @@ export default class Empresa{
         let servico = this.servicos.find(s => s.getId == id)
         let nome: string | undefined
         let valor: number | undefined
+        let quantidade: number | undefined
+
         console.log(`\nO que deseja atualizar?`)
         console.log(`\n`)
         console.log('1 - Nome')
         console.log('2 - Valor')
-        console.log('3 - Tudo')
+        console.log('3 - Quantidade')
+        console.log('4 - Tudo')
 
         switch (entrada.receberNumero(`Por favor escolha uma opção: `)) {
             case 1:
                 nome = entrada.receberTexto(`Por favor informe o novo nome do servico: `);
                 valor = servico?.valor
-                servico = servico?.update(nome, valor ?? 0)
+                quantidade = servico?.getQntd
+                servico = servico?.update(nome, valor ?? 0, quantidade ?? 0)
                 break;
             case 2:
                 nome = servico?.nome
                 valor = entrada.receberNumero(`Por favor informe o novo valor do servico: `);
-                servico = servico?.update(nome ?? '', valor)
+                servico = servico?.update(nome ?? '', valor, quantidade ?? 0)
                 break;
             case 3:
+                nome = servico?.nome
+                valor = servico?.valor
+                quantidade = entrada.receberNumero(`Por favor informe a nova quantidade disponível do servico: `);
+                servico = servico?.update(nome ?? '', valor ?? 0, quantidade)
+            case 4:
                 nome = entrada.receberTexto(`Por favor informe o novo nome do servico: `);
                 valor = entrada.receberNumero(`Por favor informe o novo valor do servico: `);
+                quantidade = entrada.receberNumero(`Por favor informe a nova quantidade disponível do servico: `);
+                servico = servico?.update(nome, valor, quantidade)
                 break;
         }
 

@@ -16,6 +16,7 @@ export default class ListagemProduto extends Listagem {
             console.log(`ID: ` + produto.getId);
             console.log(`Nome: ` + produto.nome);
             console.log(`Valor: ` + produto.valor);
+            console.log(`Quantidade: ` + produto.getQntd);
             console.log(`--------------------------------------`);
         })
     }
