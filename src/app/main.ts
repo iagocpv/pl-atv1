@@ -4,6 +4,8 @@ import CadastroCliente from "../negocio/cadastroCliente";
 import CadastroPet from "../negocio/cadastroPet";
 import CadastroProduto from "../negocio/cadastroProduto";
 import CadastroServico from "../negocio/cadastroServicos";
+import CompraProduto from "../negocio/compraProduto";
+import CompraServico from "../negocio/compraServico";
 import ListagemClientes from "../negocio/listagemClientes";
 import ListagemPets from "../negocio/listagemPets";
 import ListagemProduto from "../negocio/listagemProduto";
@@ -19,7 +21,8 @@ while (execucao) {
     console.log(`2 - Pet`);
     console.log(`3 - Produtos`);
     console.log(`4 - Serviços`);
-    console.log(`5 - Funções`);
+    console.log(`5 - Compra`);
+    console.log(`6 - Funções`);
     console.log(`0 - Sair`);
 
     let entrada = new Entrada()
@@ -166,6 +169,31 @@ while (execucao) {
             }
             break;
         case 5:            
+            let cli = empresa.findClienteByCpf(entrada.receberTexto('Digite o numero do CPF do cliente: '))  
+            
+            if(cli) {
+                console.log(`\nOpções:`);
+                console.log(`1 - Comprar produto`);
+                console.log(`2 - Comprar serviço`);
+                console.log(`0 - Voltar`);
+                let qntd: number
+                switch (entrada.receberNumero(`\nPor favor, escolha uma opção: `)){
+                    case 1:
+                        let compraProduto = new CompraProduto(cli, empresa.getProdutos)                      
+                        compraProduto.comprar()
+                        break;
+                    case 2:
+                        let compraServico = new CompraServico(cli, empresa.getServicos)                        
+                        compraServico.comprar()
+                        break;
+                    case 0:
+                        break;
+                    default:
+                        console.log('Operação não entendida :(')
+                }
+            } else console.log('Cliente não encontrado')
+            break;
+        case 6:            
             break;
         case 0:
             execucao = false

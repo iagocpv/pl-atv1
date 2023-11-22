@@ -123,4 +123,10 @@ export default class Cliente {
         } else console.log('Pet não encontrado')
        
     }
+    public addProduto(produto: Produto) {
+        this.produtosConsumidos.push(produto)
+    }
+    public addServico(servico: Servico) {
+        this.servicosConsumidos.push(servico)
+    }
 }

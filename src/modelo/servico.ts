@@ -25,4 +25,8 @@ export default class Servico {
         this.quantidadeTotal = quantidadeTotal
         return this
     }
+
+    public setQntd(qtde: number) {
+        this.quantidadeTotal = qtde
+    }
 }

@@ -10,13 +10,17 @@ export default class Produto {
 
     public get getQntd(): number {
         return this.quantidadeTotal
-    }
-
+    }    
+    
     constructor (id: number, nome: string, valor: number, quantidadeTotal: number) {
         this.id = id
         this.nome = nome
         this.valor = valor
         this.quantidadeTotal = quantidadeTotal
+    }
+    
+    public setQntd(qtde: number) {
+        this.quantidadeTotal = qtde
     }
 
     public update(nome: string, valor: number, quantidadeTotal: number) {
@@ -25,6 +29,5 @@ export default class Produto {
         this.quantidadeTotal = quantidadeTotal
         return this
     }
-
     
 }
