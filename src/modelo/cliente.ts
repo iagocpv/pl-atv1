@@ -129,4 +129,8 @@ export default class Cliente {
     public addServico(servico: Servico) {
         this.servicosConsumidos.push(servico)
     }
+    public get getValorTotalConsumido() {
+        return this.produtosConsumidos.reduce((acc, p) => acc + p.valor * p.getQntd, 0) +
+            this.servicosConsumidos.reduce((acc, s) => acc + s.valor * s.getQntd, 0)
+    }
 }

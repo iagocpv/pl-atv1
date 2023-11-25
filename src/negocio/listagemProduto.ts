@@ -20,4 +20,20 @@ export default class ListagemProduto extends Listagem {
             console.log(`--------------------------------------`);
         })
     }
+
+    public maisConsumidos() {
+        console.log(`\nProdutos mais vendidos:\n`);
+        Array.from(this.produtos)
+            .sort((a, b) => {
+                return b.getQntd - a.getQntd
+            })
+            .slice(0, 10)
+            .forEach(p => {
+                console.log(`ID: ` + p.getId);
+                console.log(`Nome: ` + p.nome);
+                console.log(`Valor: ` + p.valor);
+                console.log(`Quantidade total: ` + p.getQntd);
+                console.log(`--------------------------------------`);
+            })
+    }
 }

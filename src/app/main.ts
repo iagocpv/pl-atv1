@@ -176,7 +176,6 @@ while (execucao) {
                 console.log(`1 - Comprar produto`);
                 console.log(`2 - Comprar serviço`);
                 console.log(`0 - Voltar`);
-                let qntd: number
                 switch (entrada.receberNumero(`\nPor favor, escolha uma opção: `)){
                     case 1:
                         let compraProduto = new CompraProduto(cli, empresa.getProdutos)                      
@@ -193,7 +192,42 @@ while (execucao) {
                 }
             } else console.log('Cliente não encontrado')
             break;
-        case 6:            
+        case 6:       
+            console.log(`\nOpções:`);
+            console.log(`1 - Consumo por cliente`);
+            console.log(`2 - Clientes que mais consumiram por quantidade`);
+            console.log(`3 - Produtos ou serviços mais consumidos`)
+            console.log(`4 - Produtos ou serviços mais consumidos por tipo e raça de pet`)
+            console.log(`5 - Clientes que mais consumiram em valor`)        
+            console.log(`0 - Voltar`);    
+            
+            switch (entrada.receberNumero(`\nPor favor, escolha uma opção: `)){
+                case 1:
+                    let cliente = empresa.findClienteByCpf(entrada.receberTexto('Digite o numero do CPF do cliente: '))
+                    if(cliente) {
+                        new ListagemProduto(cliente.getProdutosConsumidos).listar()
+                        new ListagemServicos(cliente.getServicosConsumidos).listar()
+                    } else console.log('Cliente não encontrado')
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    let listagemProdutos = new ListagemProduto(empresa.getProdutos)
+                    listagemProdutos.maisConsumidos()
+                    let listagemServicos = new ListagemServicos(empresa.getServicos)
+                    listagemServicos.maisConsumidos()
+                    break;
+                case 4:
+                    break;
+                case 5:
+                    let listagemCliente = new ListagemClientes(empresa.getClientes)
+                    listagemCliente.clientesQueMaisConsumiramPorValor()
+                    break;
+                case 0:
+                    break;
+                default:
+                    console.log('Operação não entendida :(')
+            }
             break;
         case 0:
             execucao = false
