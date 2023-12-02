@@ -133,4 +133,11 @@ export default class Cliente {
         return this.produtosConsumidos.reduce((acc, p) => acc + p.valor * p.getQntd, 0) +
             this.servicosConsumidos.reduce((acc, s) => acc + s.valor * s.getQntd, 0)
     }
+
+    public get getQntdProdutosConsumidos() {
+        return this.produtosConsumidos.reduce((acc, p) => acc + p.getQntd, 0)
+    }
+    public get getQntdServicosConsumidos() {
+        return this.servicosConsumidos.reduce((acc, s) => acc + s.getQntd, 0)
+    }
 }

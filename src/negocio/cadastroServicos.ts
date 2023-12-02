@@ -32,4 +32,19 @@ export default class CadastroServico extends Cadastro {
         console.log("\nServico cadastrado :)");
         console.log(servico)
     }
+
+    public static servicosIniciais(){
+        const servicosIniciais: Array<Servico> = [];
+
+        for (let i = 1; i <= 5; i++) {
+            const nome = `Servico ${i}`;
+            const valor = Math.floor(Math.random() * 100);
+            const quantidade = Math.floor(Math.random() * 100);
+            const id = i;
+            const servico = new Servico(id, nome, valor, quantidade);
+            servicosIniciais.push(servico);
+        }
+
+        return servicosIniciais
+    }
 }

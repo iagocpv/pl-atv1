@@ -37,4 +37,45 @@ export default class ListagemClientes extends Listagem {
             console.log(`--------------------------------------`);
         })
     }
+
+    public clientesProdutosMaisConsumidos() {
+        this.clientes.map( prodC => {
+            return {
+                cpf: prodC.getCpf,
+                nome: prodC.nome,
+                nomeSocial: prodC.nomeSocial,
+                QtdprodutosConsumidos: prodC.getQntdProdutosConsumidos
+            }
+        })
+        .sort((a ,b) => { return b.QtdprodutosConsumidos - a.QtdprodutosConsumidos })
+        .slice(0, 10)
+        .forEach(prodC => {
+            console.log(`Nome: ` + prodC.nome);
+            console.log(`Nome social: ` + prodC.nomeSocial);
+            console.log(`CPF: ` + prodC.cpf.getValor);
+            console.log(`Quantidade de produtos consumidos: ` + prodC.QtdprodutosConsumidos)
+            console.log(`-------------------------------------------------------------------`);
+        })
+    }
+
+    public clientesServicosMaisConsumidos() {
+        this.clientes.map( servC => {
+            return {
+                cpf: servC.getCpf,
+                nome: servC.nome,
+                nomeSocial: servC.nomeSocial,
+                QtdServicosConsumidos: servC.getQntdServicosConsumidos
+            }
+        })
+        .sort((a ,b) => { return b.QtdServicosConsumidos - a.QtdServicosConsumidos })
+        .slice(0, 10)
+        .forEach(servC => {
+            console.log(`Nome: ` + servC.nome);
+            console.log(`Nome social: ` + servC.nomeSocial);
+            console.log(`CPF: ` + servC.cpf.getValor);
+            console.log(`Quantidade de serviços consumidos: ` + servC.QtdServicosConsumidos)
+            console.log(`-------------------------------------------------------------------`);
+        })
+    }
+
 }

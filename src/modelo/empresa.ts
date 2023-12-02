@@ -4,6 +4,9 @@ import Produto from "./produto"
 import Servico from "./servico"
 import Entrada from "../io/entrada"
 import CPF from "./cpf"
+import CadastroCliente from "../negocio/cadastroCliente"
+import CadastroProduto from "../negocio/cadastroProduto"
+import CadastroServico from "../negocio/cadastroServicos"
 
 export default class Empresa{
     private clientes: Array<Cliente>
@@ -11,9 +14,9 @@ export default class Empresa{
     private servicos: Array<Servico>
     private idPet = 0
     constructor(){
-        this.clientes = []
-        this.produtos = []
-        this.servicos = []
+        this.clientes = CadastroCliente.clientesIniciais();
+        this.produtos = CadastroProduto.produtosIniciais();
+        this.servicos = CadastroServico.servicosIniciais();
     }
     public get getClientes(){
         return this.clientes

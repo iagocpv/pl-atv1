@@ -195,10 +195,10 @@ while (execucao) {
         case 6:       
             console.log(`\nOpções:`);
             console.log(`1 - Consumo por cliente`);
-            console.log(`2 - Clientes que mais consumiram por quantidade`);
+            console.log(`2 - Top 10 clientes que mais consumiram por quantidade`);
             console.log(`3 - Produtos ou serviços mais consumidos`)
             console.log(`4 - Produtos ou serviços mais consumidos por tipo e raça de pet`)
-            console.log(`5 - Clientes que mais consumiram em valor`)        
+            console.log(`5 - Top 5 clientes que mais consumiram em valor`)        
             console.log(`0 - Voltar`);    
             
             switch (entrada.receberNumero(`\nPor favor, escolha uma opção: `)){
@@ -210,6 +210,24 @@ while (execucao) {
                     } else console.log('Cliente não encontrado')
                     break;
                 case 2:
+                    console.log(`Escolha sua categoria:`);
+                    console.log(`1 - Produtos`);
+                    console.log(`2 - Serviços`);
+                    console.log(`0 - Voltar`);
+                    switch (entrada.receberNumero(`Por favor, escolha uma opção: `)){
+                        case 1:
+                            let listClientesProd = new ListagemClientes(empresa.getClientes)
+                            listClientesProd.clientesProdutosMaisConsumidos()
+                            break;
+                        case 2:
+                            let listClientesServ = new ListagemClientes(empresa.getClientes)
+                            listClientesServ.clientesServicosMaisConsumidos()
+                            break;
+                        case 0:
+                            break;
+                        default:
+                            console.log('Operação não entendida :(')
+                    }
                     break;
                 case 3:
                     let listagemProdutos = new ListagemProduto(empresa.getProdutos)

@@ -32,4 +32,19 @@ export default class CadastroProduto extends Cadastro {
         console.log("\nProduto cadastrado :)");
         console.log(produto);
     }
+
+    public static produtosIniciais(){
+        const produtosIniciais: Array<Produto> = [];
+
+        for (let i = 1; i <= 5; i++) {
+            const nome = `Produto ${i}`;
+            const valor = Math.floor(Math.random() * 100);
+            const quantidade = Math.floor(Math.random() * 100);
+            const id = i;
+            const produto = new Produto(id, nome, valor, quantidade);
+            produtosIniciais.push(produto);
+        }
+
+        return produtosIniciais
+    }
 }

@@ -1,8 +1,8 @@
 export default class Produto {
-    private id!: number
-    public nome!: string
-    public valor!: number
-    private quantidadeTotal!: number
+    private id: number
+    public nome: string
+    public valor: number
+    private quantidadeTotal: number
 
     public get getId(): number {
         return this.id

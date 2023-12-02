@@ -1,5 +1,6 @@
 import Entrada from "../io/entrada";
 import Cliente from "../modelo/cliente";
+import Empresa from "../modelo/empresa";
 import Pet from "../modelo/pet";
 
 export default class CadastroPet {
@@ -21,5 +22,12 @@ export default class CadastroPet {
 
         console.log(`\nCadastro concluído :)`);        
         console.log(`ID do pet: ${id}\n`)
+    }
+
+    public static petsIniciais() {
+        const petsIniciais: Array<Pet> = [];
+        const empresa = new Empresa()
+
+        
     }
 }

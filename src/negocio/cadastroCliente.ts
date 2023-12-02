@@ -26,5 +26,21 @@ export default class CadastroCliente extends Cadastro {
         let cliente = new Cliente(nome, nomeSocial, cpf);
         this.clientes.push(cliente)
         console.log(`\nCadastro concluído :)\n`);
-    }    
+    }
+
+    public static clientesIniciais() {
+        const clientesIniciais: Array<Cliente> = [];
+
+        for (let i = 1; i <= 15; i++) {
+            const nome = `Cliente ${i}`;
+            const nomeSocial = `Social ${i}`;
+            const cpfValor = Math.floor(Math.random() * 1000000000).toString().padStart(11, '0');
+            const dataEmissao = new Date(1990 + i, i, i); // data de emissão fictícia
+            const cpf = new CPF(cpfValor, dataEmissao);
+            const cliente = new Cliente(nome, nomeSocial, cpf);
+            clientesIniciais.push(cliente);
+        }
+
+        return clientesIniciais;
+    }
 }
