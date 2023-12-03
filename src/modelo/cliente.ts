@@ -16,13 +16,15 @@ export default class Cliente {
     private produtosConsumidos: Array<Produto>
     private servicosConsumidos: Array<Servico>
     private pets: Array<Pet>
-    constructor(nome: string, nomeSocial: string, cpf: CPF) {
+    constructor(nome: string, nomeSocial: string, cpf: CPF, rg: RG, telefone: Telefone) {
         this.nome = nome
         this.nomeSocial = nomeSocial
         this.cpf = cpf
         this.rgs = []
+        this.rgs.push(rg)
         this.dataCadastro = new Date()
         this.telefones = []
+        this.telefones.push(telefone)
         this.produtosConsumidos = []
         this.servicosConsumidos = []
         this.pets = []
@@ -139,5 +141,9 @@ export default class Cliente {
     }
     public get getQntdServicosConsumidos() {
         return this.servicosConsumidos.reduce((acc, s) => acc + s.getQntd, 0)
+    }
+
+    public possuiPet(tipo: string | undefined, raca: string  | undefined) {
+        return this.pets.filter(p => (p.getTipo == tipo && tipo != undefined) || (p.getRaca == raca && raca != undefined)).length > 0
     }
 }

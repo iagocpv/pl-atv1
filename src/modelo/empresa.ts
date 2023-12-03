@@ -12,7 +12,7 @@ export default class Empresa{
     private clientes: Array<Cliente>
     private produtos: Array<Produto>
     private servicos: Array<Servico>
-    private idPet = 0
+    private idPet = 15
     constructor(){
         this.clientes = CadastroCliente.clientesIniciais();
         this.produtos = CadastroProduto.produtosIniciais();

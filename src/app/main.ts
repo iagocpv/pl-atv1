@@ -236,6 +236,31 @@ while (execucao) {
                     listagemServicos.maisConsumidos()
                     break;
                 case 4:
+                    console.log(`Filtrar por tipo, raça ou ambos?:`);
+                    console.log(`1 - Tipo`);
+                    console.log(`2 - Raça`);
+                    console.log(`3 - Ambos`);
+                    console.log(`0 - Voltar`);
+
+                    let tipo
+                    let raca
+                    switch (entrada.receberNumero(`Por favor, escolha uma opção: `)){
+                        case 1:
+                            tipo = entrada.receberTexto('Digite o tipo do pet ')
+                            break;
+                        case 2:
+                            raca = entrada.receberTexto('Digite a raça do pet ')
+                            break;
+                        case 3:
+                            tipo = entrada.receberTexto('Digite o tipo do pet ')
+                            raca = entrada.receberTexto('Digite a raça do pet ')
+                            break;
+                        case 0:
+                            break;
+                        default:
+                            console.log('Operação não entendida :(')
+                    }
+                    
                     console.log(`Escolha a sua categoria:`);
                     console.log(`1 - Produtos`);
                     console.log(`2 - Serviços`);
@@ -243,8 +268,12 @@ while (execucao) {
 
                     switch (entrada.receberNumero(`Por favor, escolha uma opção: `)){
                         case 1:
+                            let listClientesProdPet = new ListagemClientes(empresa.getClientes)
+                            listClientesProdPet.clientesProdutosMaisConsumidosPet(tipo, raca)
                             break;
                         case 2:
+                            let listClientesServPet = new ListagemClientes(empresa.getClientes)
+                            listClientesServPet.clientesServicosMaisConsumidosPet(tipo, raca)
                             break;
                         case 0:
                             break;

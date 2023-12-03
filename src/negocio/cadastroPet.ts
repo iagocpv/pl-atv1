@@ -1,6 +1,5 @@
 import Entrada from "../io/entrada";
 import Cliente from "../modelo/cliente";
-import Empresa from "../modelo/empresa";
 import Pet from "../modelo/pet";
 
 export default class CadastroPet {
@@ -26,8 +25,16 @@ export default class CadastroPet {
 
     public static petsIniciais() {
         const petsIniciais: Array<Pet> = [];
-        const empresa = new Empresa()
 
-        
+        for (let i = 1; i <= 15; i++) {
+            const nome = `Pet ${i}`;
+            const tipo = i % 2 == 0 ? `Cachorro`: 'Gato';
+            const raca = i % 2 != 0 ? `Raça 1`: 'Raça 2';
+            const genero = i % 2 != 0 ? `Macho`: 'Fêmea';
+
+            petsIniciais.push(new Pet(i, nome, raca, genero, tipo));
+        }
+
+        return petsIniciais;
     }
 }
