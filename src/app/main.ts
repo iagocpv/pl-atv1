@@ -236,6 +236,21 @@ while (execucao) {
                     listagemServicos.maisConsumidos()
                     break;
                 case 4:
+                    console.log(`Escolha a sua categoria:`);
+                    console.log(`1 - Produtos`);
+                    console.log(`2 - Serviços`);
+                    console.log(`0 - Voltar`);
+
+                    switch (entrada.receberNumero(`Por favor, escolha uma opção: `)){
+                        case 1:
+                            break;
+                        case 2:
+                            break;
+                        case 0:
+                            break;
+                        default:
+                            console.log('Operação não entendida :(')
+                    }
                     break;
                 case 5:
                     let listagemCliente = new ListagemClientes(empresa.getClientes)

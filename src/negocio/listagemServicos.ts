@@ -36,4 +36,12 @@ export default class ListagemServicos extends Listagem {
                 console.log(`--------------------------------------`);
             })
     }
+
+    public maisConsumidosPorTipo() {
+        
+    }
+
+    public maisConsumidosPorRaca() {
+        
+    }
 }

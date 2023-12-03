@@ -27,7 +27,7 @@ export default class ListagemProduto extends Listagem {
             .sort((a, b) => {
                 return b.getQntd - a.getQntd
             })
-            .slice(0, 10)
+            .slice(0, 5)
             .forEach(p => {
                 console.log(`ID: ` + p.getId);
                 console.log(`Nome: ` + p.nome);
@@ -35,5 +35,13 @@ export default class ListagemProduto extends Listagem {
                 console.log(`Quantidade total: ` + p.getQntd);
                 console.log(`--------------------------------------`);
             })
+    }
+
+    public maisConsumidosPorTipo() {
+        
+    }
+
+    public maisConsumidosPorRaca() {
+        
     }
 }
